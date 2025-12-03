@@ -425,45 +425,116 @@ This look focuses on enhancing your best features through expert blending and a 
 </section>
 
 
-<!-- Booking Form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glam Appointment Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .section {
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 600px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .booking-box {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
 <section id="booking" class="section">
     <h2>_________Book Your Glam Appointment_________</h2>
 
     <div class="booking-box">
         <label>Full Name:</label>
-        <input type="text" placeholder="Enter your full name">
+        <input type="text" id="fullName" placeholder="Enter your full name" required>
 
         <label>Email Address:</label>
-        <input type="email" placeholder="Enter your email">
+        <input type="email" id="email" placeholder="Enter your email" required>
 
         <label>Phone Number:</label>
-        <input type="text" placeholder="Enter your phone number">
+        <input type="text" id="phone" placeholder="Enter your phone number" required>
 
         <label>Select Service:</label>
-        <select>
+        <select id="service">
+            <option value="">Select a service</option>
             <option>Hair Down Styling</option>
             <option>Hair Up Styling</option>
             <option>Soft Glam Makeup</option>
             <option>Full Glam Makeup</option>
             <option>Hair + Makeup Package</option>
-			<option>Hair Retouch</option>
-			<option>Make-up Retouch</option>
-			<option>Full Assit</option>
-			
+            <option>Hair Retouch</option>
+            <option>Make-up Retouch</option>
+            <option>Full Assist</option>
         </select>
 
         <label>Select Date:</label>
-        <input type="date">
+        <input type="date" id="date" required>
 
         <label>Select Time:</label>
-        <input type="time">
+        <input type="time" id="time" required>
 
         <label>Additional Notes:</label>
-        <textarea rows="4" placeholder="Anything we should know?"></textarea>
+        <textarea rows="4" id="notes" placeholder="Anything we should know?"></textarea>
 
-        <button>Submit Booking</button>
+        <button id="submitBtn">Submit Booking</button>
     </div>
 </section>
+
+<script>
+    document.getElementById('submitBtn').addEventListener('click', function() {
+        // Get the values from the form
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const service = document.getElementById('service').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const notes = document.getElementById('notes').value;
+
+        // Simple validation
+        if (!fullName || !email || !phone || !service || !date || !time) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        // Here you can implement what happens when the form is submitted
+        alert(`Booking submitted!\nName: ${fullName}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nDate: ${date}\nTime: ${time}\nNotes: ${notes}`);
+        
+        // Optionally, reset the form
+        // document.querySelector('.booking-box').reset();
+    });
+</script>
 
 <!-- Contact Section -->
 <section id="contact" class="section">
